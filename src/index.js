@@ -1,6 +1,8 @@
 import React from "react";
 import react from "react";
 import reactDom from "react-dom";
+import HemisphereDisplay from "./hemisphere_display";
+
 
 //functioal component
 //const App = () => {
@@ -36,27 +38,28 @@ import reactDom from "react-dom";
 
 class App extends React.Component {
 //what will be called whenever an instance of the class is created before anything else: a method of initializing state
-    constructor(props) {
+    /*constructor(props) {
         super(props)
-
         //initializing state object
         this.state = { latitude: null, errorMessage: '' }
 
-        window.navigator.geolocation.getCurrentPosition(
-           // (position) => console.log(position),
-            (position) => {
-                this.setState({ latitude: position.coords.latitude})
-            },
-            (error) => {
-                this.setState({ errorMessage: error.message})
-            }
-        );
+    }*/
 
-    }
+    state = {latitude: null, errorMessage: ''}
 
     //this function will be called wheneveer the render method shows on the screen
     componentDidMount(){
-        console.log('componentDidMount')
+       // console.log('componentDidMount')
+       window.navigator.geolocation.getCurrentPosition(
+        // (position) => console.log(position),
+         (position) => {
+             this.setState({ latitude: position.coords.latitude})
+         },
+         (error) => {
+             this.setState({ errorMessage: error.message})
+         }
+     );
+
     }
 
     
@@ -72,7 +75,7 @@ class App extends React.Component {
         }
 
         if(!this.state.errorMessage && this.state.latitude){
-            return<div> {this.state.latitude} </div>
+            return<div> <HemisphereDisplay latitude={this.state.latitude}/> </div>
         }
 
         else {
