@@ -1,4 +1,3 @@
-import React from "react";
 import react from "react";
 import reactDom from "react-dom";
 import HemisphereDisplay from "./hemisphere_display";
@@ -36,7 +35,7 @@ import HemisphereDisplay from "./hemisphere_display";
 } */
 
 
-class App extends React.Component {
+class App extends react.Component {
 //what will be called whenever an instance of the class is created before anything else: a method of initializing state
     /*constructor(props) {
         super(props)
